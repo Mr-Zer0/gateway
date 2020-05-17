@@ -24,3 +24,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/testing', function () {
+    return sha1(md5(1 . 1) . time() . mt_rand());
+});

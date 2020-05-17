@@ -3,9 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Application;
+use Auth;
 
 class ApplicationController extends Controller
 {
+    /** @var \App\User $user Model instance of user */
+    protected $user;
+
+    /**
+     * Constructor method
+     **/
+    public function __construct()
+    {
+        $this->user = Auth::user();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +26,7 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        return "Hey there! Here is an application";
+        return view('application.index', ['applications' => Application::all()]);
     }
 
     /**
