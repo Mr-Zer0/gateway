@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Application;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
@@ -36,7 +36,7 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        //
+        return view('application.create');
     }
 
     /**
@@ -47,7 +47,14 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $app = new Application($request->only('name', 'description', 'type'));
+
+        if ($app = $request->user()->applications()->save($app)) {
+            $app->key = Keygen::generate($app);
+            $app->save();
+        }
+
+        return redirect()->route('home');
     }
 
     /**

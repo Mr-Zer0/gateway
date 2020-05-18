@@ -19,8 +19,8 @@ class Keygen
      * @param App\Application $app 
      * @return String
      **/
-    public static function generate(Application $app, User $user)
+    public static function generate(Application $app)
     {
-        return sha1(md5($app->id . $user->id) . time() . mt_rand());
+        return sha1(md5($app->id . $app->user()->id) . time() . mt_rand());
     }
 }

@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * One to many relation to applications table
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     **/
+    public function applications()
+    {
+        return $this->hasMany('App\Application');
+    }
 }
