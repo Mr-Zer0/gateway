@@ -47,7 +47,7 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        $app = new Application($request->only('name', 'description', 'type'));
+        $app = new Application($request->only('name', 'description'));
 
         if ($app = $request->user()->applications()->save($app)) {
             $app->key = Keygen::generate($app);

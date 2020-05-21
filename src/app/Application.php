@@ -12,7 +12,7 @@ class Application extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'key', 'type', 'user_id', 'disabled'];
+    protected $fillable = ['name', 'description', 'key', 'user_id', 'disabled'];
 
     /**
      * Many to one relation to user table

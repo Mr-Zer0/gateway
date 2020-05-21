@@ -18,7 +18,6 @@ class CreateApplicationsTable extends Migration
             $table->string('name', 100);
             $table->text('description');
             $table->string('key', 40);
-            $table->tinyInteger('type');
             $table->boolean('disabled')->default(false);
             $table->foreignId('user_id');
             $table->timestamps();
