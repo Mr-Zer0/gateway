@@ -5,20 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Application;
 use Illuminate\Support\Facades\Auth;
+use App\Util\Keygen;
 
 class ApplicationController extends Controller
 {
-    /** @var \App\User $user Model instance of user */
-    protected $user;
-
-    /**
-     * Constructor method
-     **/
-    public function __construct()
-    {
-        $this->user = Auth::user();
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +39,7 @@ class ApplicationController extends Controller
     {
         $app = new Application($request->only('name', 'description'));
 
-        if ($app = $request->user()->applications()->save($app)) {
+        if ($app = Auth::user()->applications()->save($app)) {
             $app->key = Keygen::generate($app);
             $app->save();
         }
