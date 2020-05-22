@@ -48,7 +48,7 @@ class ApplicationController extends Controller
             $app->save();
         }
 
-        return redirect()->route('home');
+        return redirect()->route('application');
     }
 
     /**
@@ -59,7 +59,9 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-        //
+        $application = Application::find($id);
+
+        return view('application.show', compact('application'));
     }
 
     /**
