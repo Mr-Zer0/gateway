@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role'
     ];
 
     /**
@@ -44,5 +44,15 @@ class User extends Authenticatable
     public function applications()
     {
         return $this->hasMany('App\Application');
+    }
+
+    /**
+     * Accessor method to determine wherether the user is admin or not
+     *
+     * @return boolean
+     */
+    public function getIsAdminAttribute()
+    {
+        return ($this->role == 1) ? true : false;
     }
 }
