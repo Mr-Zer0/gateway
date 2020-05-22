@@ -72,7 +72,7 @@ class ApplicationController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('application.edit', ['application' => Application::find($id)]);
     }
 
     /**
