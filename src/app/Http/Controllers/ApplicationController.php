@@ -48,7 +48,7 @@ class ApplicationController extends Controller
             $app->save();
         }
 
-        return redirect()->route('application');
+        return redirect()->route('application.index');
     }
 
     /**
