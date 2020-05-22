@@ -47,12 +47,12 @@ class User extends Authenticatable
     }
 
     /**
-     * Accessor method to determine wherether the user is admin or not
+     * Determine whether the user is admin or not
      *
      * @return boolean
      */
-    public function getIsAdminAttribute()
+    public function isAdmin()
     {
         return ($this->role == 1) ? true : false;
     }
-}
+ }
