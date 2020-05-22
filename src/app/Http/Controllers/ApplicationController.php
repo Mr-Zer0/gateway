@@ -16,7 +16,11 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        return view('application.index', ['applications' => Application::all()]);
+        $applications = (Auth::user()->isAdmin())
+                            ? Application::all()
+                            : Application::ownBy(Auth::user())->get();
+
+        return view('application.index', compact('applications'));
     }
 
     /**
