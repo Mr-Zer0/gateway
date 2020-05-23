@@ -18,6 +18,11 @@
                     >
                         Edit
                     </a>
+                    <form action="{{ route('application.destroy', $application->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
                 </div>
             </div>
         </div>

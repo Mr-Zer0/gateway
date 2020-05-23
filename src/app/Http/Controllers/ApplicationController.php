@@ -84,7 +84,14 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $application = Application::find($id);
+
+        $application->name = $request->name;
+        $application->description = $request->description;
+
+        $application->save();
+
+        return redirect()->route('application.index');
     }
 
     /**
@@ -95,6 +102,8 @@ class ApplicationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Application::find($id)->delete();
+
+        return redirect()->route('application.index');
     }
 }
