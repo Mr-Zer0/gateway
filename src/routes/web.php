@@ -21,11 +21,12 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('application', 'ApplicationController');
-    Route::resource('user', 'UserController');
+
+    Route::get('user/{id}/role/{role}', 'UserController@change')->name('user.change');
+
+    Route::resource('user', 'UserController')->only([
+        'index', 'show', 'edit', 'update'
+    ]);
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/testing', function () {
-    return App\Util\Keygen::generate(App\Application::findOrFail(1), Auth::user());
-});

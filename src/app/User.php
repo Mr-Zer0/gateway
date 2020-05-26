@@ -48,8 +48,13 @@ class User extends Authenticatable
 
     public function promoteAdmin()
     {
-        $this->role = 1;
+        $this->role = 0;
         return $this->save();
+    }
+
+    public function getRoleNameAttribute()
+    {
+        return config('user.role.' . $this->getAttributes()['role']);
     }
 
     /**
@@ -59,6 +64,6 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return ($this->role == 1) ? true : false;
+        return ($this->role == 0) ? true : false;
     }
  }

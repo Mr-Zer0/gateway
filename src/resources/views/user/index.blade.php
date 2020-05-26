@@ -17,6 +17,7 @@
                                 <th>Name</th>
                                 <th>Role</th>
                                 <th>Email</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,8 +30,11 @@
                                     {{ $user->name }}
                                     </a>
                                 </td>
-                                <td>{{ $user->role }}</td>
+                                <td>{{ $user->role_name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>
+                                    <a href="{{ route('user.change', [$user->id, '5']) }}" class="btn btn-success">Promote Admin</a>
+                                </td>
                             </tr>
 
                             @endforeach

@@ -29,6 +29,11 @@ class UserController extends Controller
         //
     }
 
+    public function change($id, $role)
+    {
+        dd($id, $role);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
