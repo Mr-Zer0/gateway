@@ -46,6 +46,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Application');
     }
 
+    public function promoteAdmin()
+    {
+        $this->role = 1;
+        return $this->save();
+    }
+
     /**
      * Determine whether the user is admin or not
      *
