@@ -46,9 +46,44 @@ class User extends Authenticatable
         return $this->hasMany('App\Application');
     }
 
-    public function promoteAdmin()
+    /**
+     * Promote specific user to admin
+     * 
+     * @return boolean
+     */
+    public function promote()
     {
-        $this->role = 0;
+        return $this->changeRole('admin');
+    }
+
+    /**
+     * Demote specific user to client
+     * 
+     * @return boolean
+     */
+    public function demote()
+    {
+        return $this->changeRole('client');
+    }
+
+    /**
+     * Change the role of specific user
+     * 
+     * @return boolean
+     */
+    public function changeRole($designation)
+    {
+        switch ($designation) {
+            case 'admin':
+                $this->role = 1;
+            break;
+
+            case 'client':
+            default:
+                $this->role = 2;
+            break;
+        }
+
         return $this->save();
     }
 

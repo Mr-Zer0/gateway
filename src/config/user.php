@@ -2,8 +2,7 @@
 
 return [
     'role' => [
-        '0' => 'Admin',
-        '1' => 'Moderator',
-        '2' => 'Client'
+        '1' => 'Admin',
+        '2' => 'Client',
     ]
 ];

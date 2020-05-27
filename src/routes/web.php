@@ -22,7 +22,8 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::resource('application', 'ApplicationController');
 
-    Route::get('user/{id}/role/{role}', 'UserController@change')->name('user.change');
+    Route::get('user/{id}/promote', 'UserController@promote')->name('user.promote');
+    Route::get('user/{id}/demote', 'UserController@demote')->name('user.demote');
 
     Route::resource('user', 'UserController')->only([
         'index', 'show', 'edit', 'update'

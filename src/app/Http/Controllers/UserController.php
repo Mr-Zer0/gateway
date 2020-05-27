@@ -29,9 +29,28 @@ class UserController extends Controller
         //
     }
 
-    public function change($id, $role)
+    /**
+     * Promote specific user to admin
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function promote($id)
     {
-        dd($id, $role);
+        User::find($id)->promote();
+
+        return redirect()->back();
+    }
+
+    /**
+     * Demote specific user to admin
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function demote($id)
+    {
+        User::find($id)->demote();
+
+        return redirect()->back();
     }
 
     /**

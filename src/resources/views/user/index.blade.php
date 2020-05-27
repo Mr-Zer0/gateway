@@ -33,7 +33,7 @@
                                 <td>{{ $user->role_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    <a href="{{ route('user.change', [$user->id, '5']) }}" class="btn btn-success">Promote Admin</a>
+                                    <a href="{{ route('user.promote', $user->id) }}" class="btn btn-success">Promote Admin</a>
                                 </td>
                             </tr>
 
