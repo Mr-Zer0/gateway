@@ -99,6 +99,6 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return ($this->role == 0) ? true : false;
+        return ($this->role == 1) ? true : false;
     }
  }
