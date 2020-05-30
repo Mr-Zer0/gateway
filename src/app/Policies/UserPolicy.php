@@ -17,7 +17,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -33,17 +33,6 @@ class UserPolicy
     }
 
     /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function create(User $user)
-    {
-        //
-    }
-
-    /**
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
@@ -52,7 +41,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        //
+        return ($user->id === $model->id || $user->isAdmin());
     }
 
     /**
